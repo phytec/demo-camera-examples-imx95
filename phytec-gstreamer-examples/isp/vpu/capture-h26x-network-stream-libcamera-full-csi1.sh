@@ -13,21 +13,34 @@ HOST_IP="192.168.3.10"
 UDP_PORT="5200"
 
 echo "================================================================================="
-echo "Starting VPU encoded stream from ${CAM_PHYCAM_NAME} on ${INTERFACE} via ${PROC} using Gstreamer"
+echo "Starting VPU encoded stream from ${CAM_PHYCAM_NAME} on ${INTERFACE} via ${PROC}"
+echo "using Gstreamer."
 echo "Configured Sensor Mode: ${CAM_MODENAME}"
 echo "Capturing ${CAP_WIDTH}x${CAP_HEIGHT} with ${CAP_FMT} from ${LIBCAM_NAME},"
-echo "converting it to a H264 stream and streaming it via Network to ${HOST_IP}:${UDP_PORT}"
+echo "converting it to a H264/H265 stream and streaming it via Network to"
+echo "${HOST_IP}:${UDP_PORT}"
 echo ""
 echo "Note: Make sure to configure the correct HOST_IP in this script and the"
 echo "correct Target device IP in VLC_Network_Stream.sdp"
 echo "================================================================================="
+
+echo " Choose the Encoder to use"
+echo " ========================="
+echo " 1 = H.264 (IMX VPU-based AVC/H264 video encoder)"
+echo " 2 = H.265 (IMX VPU-based HEVC/H265 video encoder)"
+read ENCODER_TYP_NUMBER
+echo " Your selection = $ENCODER_TYP_NUMBER"
+case $ENCODER_TYP_NUMBER in
+  "1") ENCODING="queue ! v4l2h264enc ! rtph264pay";;
+  "2") ENCODING="queue ! v4l2h265enc ! rtph265pay";;
+  *) ENCODING="queue ! v4l2h264enc ! rtph264pay";;
+esac
 
 set_mode_libcamera
 set_controls
 
 SOURCE="libcamerasrc camera-name=${LIBCAM_NAME} ${LIBCAM_STREAM_ROLE}"
 RATE="videorate ! $(echo ${GST_FMT} | cut -d',' -f1),framerate=30/1"
-ENCODING="queue ! v4l2h264enc ! rtph264pay"
 SINK="udpsink host=${HOST_IP} port=${UDP_PORT} sync=false"
 
 echo "  LIBCAMERA_PIPELINES_MATCH_LIST='nxp/neo' gst-launch-1.0 ${SOURCE} ! \\"

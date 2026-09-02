@@ -4,14 +4,14 @@ Gstreamer VPU Encoding Examples with ISP
 Scripts
 -------
 
-* save-h264-mkv-libcamera-full-csi1.sh / save-h264-mkv-libcamera-full-csi2.sh
+* save-h26x-mkv-libcamera-full-csi1.sh / save-h26x4-mkv-libcamera-full-csi2.sh
   This example saves a full resolution video stream from the connected camera,
-  H264 encoded in an MKV file.
+  H264 or H265 encoded in an MKV file.
 
-* capture-h264-network-stream-libcamera-full-csi1.sh /
-  capture-h264-network-stream-libcamera-full-csi2.sh
-  This example streams a full resolution video stream H264 encoded to the
-  network, which can be accessed e.g. with VLC on a connected host PC.
+* capture-h26x-network-stream-libcamera-full-csi1.sh /
+  capture-h26x-network-stream-libcamera-full-csi2.sh
+  This example streams a full resolution video stream H264 or H265 encoded to
+  the network, which can be accessed e.g. with VLC on a connected host PC.
   The provided VLC_Network_Stream.sdp can be used to access the provided
   stream on the host PC.
   Make sure to set the correct IP address of your target board in

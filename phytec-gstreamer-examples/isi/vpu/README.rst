@@ -4,12 +4,13 @@ Gstreamer VPU Encoding Examples
 Scripts
 -------
 
-* save-h264-mkv-1280x720.sh
-  This example saves a HD video stream from the connected camera, H264
+* save-h26x-mkv-1280x720-csi1.sh / save-h26x-mkv-1280x720-csi2.sh
+  This example saves a HD video stream from the connected camera, H264 or H265
   encoded in an MKV file.
 
-* capture-h264-network-stream-1280x720.sh
-  This example streams an HD video stream H264 encoded to the network, which
+* capture-h26x-network-stream-1280x720-csi1.sh
+  capture-h26x-network-stream-1280x720-csi2.sh
+  This example streams an HD video stream H26x encoded to the network, which
   can be accessed e.g. with VLC on a connected host PC.
   The provided VLC_Network_Stream.sdp can be used to access the provided
   stream on the host PC.
