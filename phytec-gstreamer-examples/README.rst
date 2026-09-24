@@ -57,9 +57,6 @@ Additional Gstreamer Examples
 Subfolders isi/vpu/ and isp/vpu contain additional examples showing the use of
 VPU accelerated H264 encoding.
 
-Subfolder phytec_usb_cam/ contains additional examples to work with PHYTECs
-USB cameras.
-
 
 Tools
 =====
