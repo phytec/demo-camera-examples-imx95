@@ -172,7 +172,7 @@ set_mode_libcamera() {
 
 	MC="media-ctl -d /dev/media-isi"
 	CROP="(${CAM_OFFSET_LEFT},${CAM_OFFSET_TOP})/${CAM_WIDTH}x${CAM_HEIGHT}"
-	FMT="${CAM_FMT}/${CAM_WIDTH}x${CAM_HEIGHT}"
+	FMT="${CAM_FMT}/${CAP_WIDTH}x${CAP_HEIGHT}"
 
 	echo ""
 	echo "Setting up Sensor Crop ${INTERFACE}"
